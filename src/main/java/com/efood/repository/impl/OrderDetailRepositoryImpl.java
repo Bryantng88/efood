@@ -79,7 +79,7 @@ public class OrderDetailRepositoryImpl implements OrderDetailRepository {
 		em.getTransaction().begin();
 
 		od = em.find(OrderDetail.class, id);
-		od.setMealType(SIDEDISH);
+//		od.setMealType(SIDEDISH);
 		em.getTransaction().commit();
 	}
 

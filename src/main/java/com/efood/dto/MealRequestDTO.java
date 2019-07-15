@@ -1,25 +1,44 @@
 package com.efood.dto;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.efood.model.EMealPackage;
+import com.efood.model.EMealType;
 import com.efood.model.Meal;
+import com.efood.model.MealType;
 
 public class MealRequestDTO {
 	private String name;
-	private String title;
-	private String kcal;
-	private String mealType;
-	private String mealPackage;
-	private int mealSale;
-	private int mealCount;
+	private int kcal;
+	private List<String> mealTypes = new ArrayList<String>();
+//	private List<String> mealPackage = new ArrayList<String>();
+	private int sale;
+	private int volume;
 	private String description;
-	private String mealRecipe;
+	private String recipe;
+	
 	
 	public Meal toMeal() {
 		Meal meal = new Meal();
 		meal.setName(name);
-		meal.setRecipe(mealRecipe);
-		meal.setVolume(mealCount);
+		meal.setRecipe(recipe);
+		meal.setVolume(volume);
 		meal.setDescription(description);
-		meal.setCost(mealSale);
+		meal.setKcal(kcal);
+		meal.setSale(sale);
+		
+		for(String item: this.mealTypes) {
+			MealType mealType = new MealType();
+			mealType.setMealType(EMealType.valueOf(item));
+			meal.getMealTypes().add(mealType);
+		}
+		
+//		List<EMealPackage> listMealPackage = new ArrayList<EMealPackage>();
+//		for(String mealP: this.mealPackage) {
+//			listMealPackage.add(EMealPackage.valueOf(mealP));
+//		}
+//		meal.setMealPackages(listMealPackage);
 		return meal;
 	}
 	
@@ -29,42 +48,39 @@ public class MealRequestDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getTitle() {
-		return title;
-	}
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	public String getKcal() {
+
+	public int getKcal() {
 		return kcal;
 	}
-	public void setKcal(String kcal) {
+	public void setKcal(int kcal) {
 		this.kcal = kcal;
 	}
-	public String getMealType() {
-		return mealType;
+
+
+	public int getSale() {
+		return sale;
 	}
-	public void setMealType(String mealType) {
-		this.mealType = mealType;
+
+	public void setSale(int sale) {
+		this.sale = sale;
 	}
-	public String getMealPackage() {
-		return mealPackage;
+
+	public int getVolume() {
+		return volume;
 	}
-	public void setMealPackage(String mealPackage) {
-		this.mealPackage = mealPackage;
+
+	public void setVolume(int volume) {
+		this.volume = volume;
 	}
-	public int getMealSale() {
-		return mealSale;
+
+	public String getRecipe() {
+		return recipe;
 	}
-	public void setMealSale(int mealSale) {
-		this.mealSale = mealSale;
+
+	public void setRecipe(String recipe) {
+		this.recipe = recipe;
 	}
-	public int getMealCount() {
-		return mealCount;
-	}
-	public void setMealCount(int mealCount) {
-		this.mealCount = mealCount;
-	}
+
 	public String getDescription() {
 		return description;
 	}

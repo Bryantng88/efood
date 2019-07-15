@@ -26,15 +26,14 @@ import org.springframework.stereotype.Component;
 @Entity
 @Table(name = "ORDER_DETAIL",
 		uniqueConstraints = 
-		@UniqueConstraint(columnNames = {"day", "menu_type", "meal_type" })  
+		@UniqueConstraint(columnNames = {"day", "menu_type" })  
 		
 		)
 public class OrderDetail {
 
 	@Override
 	public String toString() {
-		return "OrderDetail [id=" + id + ", weekDay=" + weekDay + ", weekType=" + weekType + ", mealType=" + mealType
-				+ ", status=" + status + ", menuType=" + menuType + ", meal=" + meal + ", order=" + order
+		return "OrderDetail [id=" + id + ", weekDay=" + weekDay + ",   status=" + status + ", menuType=" + menuType + ", meal=" + meal + ", order=" + order
 				+ ", shipUnit=" + shipUnit + "]";
 	}
 
@@ -81,21 +80,7 @@ public class OrderDetail {
 		this.weekDay = weekDay;
 	}
 
-	public WeekType getWeekType() {
-		return weekType;
-	}
 
-	public void setWeekType(WeekType weekType) {
-		this.weekType = weekType;
-	}
-
-	public MealType getMealType() {
-		return mealType;
-	}
-
-	public void setMealType(MealType mealType) {
-		this.mealType = mealType;
-	}
 
 	public Status getStatus() {
 		return status;
@@ -164,15 +149,7 @@ public class OrderDetail {
 		this.shipUnit = shipUnit;
 	}
 
-	@Enumerated(EnumType.STRING)
-	@Column(name = "week_type")
-	private WeekType weekType;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "meal_type")
-	private MealType mealType;
-
-
 //	@Column(name = "order_unit_id")
 
 	@Enumerated(EnumType.STRING)

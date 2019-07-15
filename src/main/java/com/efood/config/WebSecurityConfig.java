@@ -91,9 +91,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         );
         web.ignoring().antMatchers(
                 HttpMethod.GET,
+                "/downloadFile/**",
                 "/",
                 "/webjars/**",
                 "/*.html",
+                "/api/no-auth/**",
                 "/favicon.ico",
                 "/**/*.html",
                 "/**/*.css",

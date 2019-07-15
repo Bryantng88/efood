@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -47,8 +48,8 @@ public class OrderController {
 //    public void insertOrder(@RequestBody List<OrderDetail> orderDetails) {
 //    	orderService.insertOrder(orderDetails);
 //    }
-    
-    @RequestMapping( method = RequestMethod.POST, value = "/insert-order-detail")
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
+    @RequestMapping( method = RequestMethod.POST, value = "/submit")
     @PreAuthorize("hasRole('USER')")
     public void insertOrderDetail(@RequestBody List<OrderDetail> orderDetails) {
     	orderService.insertOrderDetail(orderDetails);
